@@ -33,5 +33,8 @@ node{
     {
         build 'demo2_clean'
     }
-    
+    stage('Deploy')
+    {
+        archiveArtifacts artifacts: 'targets/*.jar'
+    }
 }
