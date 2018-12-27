@@ -7,3 +7,39 @@ AbstractProject<?, ?> otherJob = Jenkins.getInstance().getItemByFullName("otherJ
 RunList<?> builds = otherJob.getBuilds().overThresholdOnly(Result.SUCCESS)
 
 def list = builds.limit(5).collect { it.number }
+
+
+
+
+--------------------- same job build numbers -------------
+
+import hudson.model.*
+
+BUILD_JOB_NAME = "testing_build"
+
+def getJobs() {
+    def hi = Hudson.instance
+    return hi.getItems(Job)
+}
+
+def getBuildJob() {
+    def buildJob = null
+    def jobs = getJobs()
+    (jobs).each { job ->
+        if (job.displayName == BUILD_JOB_NAME) {
+            buildJob = job
+        }
+    }
+    return buildJob
+}
+
+def getAllBuildNumbers(Job job) {
+    def buildNumbers = []
+    (job.getBuilds()).each { build ->
+        buildNumbers.add(build.number)
+    }
+    return buildNumbers
+}
+
+def buildJob = getBuildJob()
+return getAllBuildNumbers(buildJob)
