@@ -35,6 +35,6 @@ node{
     }
     stage('Deploy')
     {
-        archiveArtifacts artifacts: 'targets/*.jar'
+        archiveArtifacts artifacts: 'target/*.jar'
     }
 }
