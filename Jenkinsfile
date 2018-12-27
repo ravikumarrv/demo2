@@ -1,5 +1,5 @@
 
-node{
+node('master'){
     deleteDir()
     stage('checkout')
     {
