@@ -1,0 +1,9 @@
+import jenkins.model.Jenkins
+import hudson.model.AbstractProject
+import hudson.model.Result
+import hudson.util.RunList
+
+AbstractProject<?, ?> otherJob = Jenkins.getInstance().getItemByFullName("otherJobName", AbstractProject.class)
+RunList<?> builds = otherJob.getBuilds().overThresholdOnly(Result.SUCCESS)
+
+def list = builds.limit(5).collect { it.number }
