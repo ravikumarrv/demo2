@@ -35,6 +35,6 @@ node('master'){
     }
     stage('Deploy')
     {
-        archiveArtifacts artifacts: 'target/*.jar'
+        archiveArtifacts artifacts: 'target/*.jar', onlyIfSuccessful: true
     }
 }
