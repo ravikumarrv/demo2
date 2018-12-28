@@ -21,7 +21,7 @@ node('xyz_project'){
     {
        maven = tool name: 'mvn'
        env.MAVEN_HOME = "${maven}"
-       bat 'mvn test'
+       sh 'mvn test'
     }
     
     stage('package')
