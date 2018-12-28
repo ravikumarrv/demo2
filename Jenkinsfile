@@ -14,7 +14,7 @@ node('xyz_project'){
        env.JAVA_HOME = "${jdk}"
        maven = tool name: 'mvn'
        env.MAVEN_HOME = "${maven}"
-       bat 'mvn compile'
+       sh 'mvn compile'
     }
     
     stage ('test')
@@ -26,7 +26,7 @@ node('xyz_project'){
     
     stage('package')
     {
-         bat 'mvn package'
+         sh 'mvn package'
     }
     
     stage('another_project')
